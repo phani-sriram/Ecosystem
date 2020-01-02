@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+<div>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset>
+            <legend>{{ legend }}</legend>
+            
+                
+            <div>
+                
+                {{ form.search.label() }}
+                {% if form.search.errors %}
+                    {{ form.search() }}
+                    <div>
+                        {% for error in form.search.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.search() }}
+                {% endif %}
+            
+            </div>
+           
+        <div>
+            {{ form.submit() }}
+        </div>
+       
+    </form>
+</div>
+{% endblock content %}

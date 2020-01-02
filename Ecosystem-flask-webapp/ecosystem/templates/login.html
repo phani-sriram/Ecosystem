@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div>
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset>
+                <legend>Join Your Neighbours Today</legend>
+                <div>
+                    {{ form.username.label() }}
+                    {% if form.username.errors %}
+                        {{ form.username() }}
+                        <div>
+                            {% for error in form.username.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.username() }}
+                    {% endif %}
+                
+                </div>
+                   
+                <div>
+                    {{ form.password.label() }}
+                    {% if form.password.errors %}
+                        {{ form.password() }}
+                        <div>
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password() }}
+                    {% endif %}
+                
+                </div>
+                <div>
+                    {{ form.remember() }}
+                    {{ form.remember.label() }}    
+                </div>
+            </fieldset>
+            <div>
+                {{ form.submit() }}
+            </div>
+            <small>
+                <a href="#">Forgot password?</a>
+            </small>
+        </form>
+    </div>
+    <div>
+        <small>
+            Don't have an account? <a href="{{ url_for('register') }}">Register</a>
+        </small>
+    </div>
+{% endblock content %} 

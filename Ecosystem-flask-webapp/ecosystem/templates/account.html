@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div>
+        <div>
+            <h1>Username : {{ current_user.username }}</h1>
+            <h1>Name : {{ current_user.name }}</h1>
+            <h1>Resident of : {{ current_user.apt_no }}</h1>
+        </div>
+        
+    </div>
+        
+{% endblock content %}

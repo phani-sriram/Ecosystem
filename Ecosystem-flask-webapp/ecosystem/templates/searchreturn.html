@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% for post in posts %}
+        <hr>
+        {% if post.anonymity == False %}
+            <h3>Posted by : {{ post.author.name }}</h3>
+            <h3>Resident of : {{ post.author.apt_no }}</h3>
+            <h3>Posted on : {{ post.date_posted.strftime('%Y-%m-%d') }}</h3>
+            <a href={{ url_for('post', post_id = post.id) }}>{{ post.title }}</a>
+            <h3>Content</h3>
+            <p>{{ post.content }}</p>
+            <hr>
+        {% endif %}
+    {% endfor %}
+    <p>These are the posts that the user has written giving us permission to publish his/her identity. The user might have written other posts anonymously that we do not have the permission to display</p>
+    <hr>
+    
+    {% for event in events %}
+        <hr>
+        <h3>Posted by : {{ event.author.name }}</h3>
+        <h3>Resident of : {{ event.author.apt_no }}</h3>
+        <a href="{{ url_for('event', event_id = event.id) }}">Posted on : {{ event.date_posted.strftime('%Y-%m-%d') }}</a>
+        <h3>Category : {{ event.category }}</h3>
+        <h3>Content</h3>
+        <p>{{ event.content }}</p>
+        <hr>
+    {% endfor %}
+    <hr>
+
+    {% for poll in polls %}
+        
+        <hr>
+        <h3>Posted by : {{ poll.author.name }}</h3>
+        <br>
+        {% if poll.votes_1 + poll.votes_2 <= 40 %}
+        <h3>Content</h3>
+        <p> {{ poll.content }}</p>
+        <h3>Option 1 : {{poll.option1}} </h3>
+        <p>{{ poll.votes_1 }} vote/votes for this option</p>
+        <h3>Option 2 : {{poll.option2}} </h3>
+        <p>{{ poll.votes_2 }} vote/votes for this option</p>
+        <a href= "{{ url_for('vote', poll_id=poll.id) }}">Vote Now</a>
+        
+        <hr>
+        {% else %}
+            
+                <p>{{ poll.content }}</p>
+                <p>Option 1: {{ poll.option1 }}</p>
+                <p>Option 2: {{ poll.option2 }}</p>
+                {% if poll.option1 > poll.option2 %}
+                    <p>Option 1 : {{ poll.option1 }} has won this poll</p>
+                {% else %}
+                    <p>Option 2 : {{ poll.option2 }} has won this poll</p>
+                {% endif %}
+        {% endif %}
+    {% endfor %}
+
+{% endblock content %}

@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block content %}
+   
+    <h1>RUNNING POLLS</h1>
+    {% for poll in polls %}
+        
+        <hr>
+        <h3>Posted by : {{ poll.author.name }}</h3>
+        <br>
+        {% if poll.votes_1 + poll.votes_2 <= 40 %}
+        <h3>Content</h3>
+        <p> {{ poll.content }}</p>
+        <h3>Option 1 : {{poll.option1}} </h3>
+        <p>{{ poll.votes_1 }} vote/votes for this option</p>
+        <h3>Option 2 : {{poll.option2}} </h3>
+        <p>{{ poll.votes_2 }} vote/votes for this option</p>
+        <a href= "{{ url_for('vote', poll_id=poll.id) }}">Vote Now</a>
+        >
+        <hr>
+        {% else %}
+            
+                <p>{{ poll.content }}</p>
+                <p>Option 1: {{ poll.option1 }}</p>
+                <p>Option 2: {{ poll.option2 }}</p>
+                {% if poll.option1 > poll.option2 %}
+                    <p>Option 1 : {{ poll.option1 }} has won this poll</p>
+                {% else %}
+                    <p>Option 2 : {{ poll.option2 }} has won this poll</p>
+                {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endblock content %}

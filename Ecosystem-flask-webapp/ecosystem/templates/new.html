@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block content %}
+    <br>
+    <a href="{{ url_for('new_post') }}">New Post?</a>
+    <br>
+    <a href= "{{ url_for('new_event') }}">Upcoming event?</a>
+    <br>
+    <a href="{{ url_for('create_poll') }}">Take A Poll</a>
+{% endblock content %}

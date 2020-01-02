@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block content %}
+<div>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset>
+            <legend>{{ legend }}</legend>
+            <div>
+                {{ form.category.label() }}
+                {% if form.category.errors %}
+                    {{ form.category() }}
+                    <div>
+                        {% for error in form.category.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.category() }}
+                {% endif %}
+            </div>
+            <div>
+                    {{ form.date_of_event.label() }}
+                    {% if form.date_of_event.errors %}
+                        {{ form.date_of_event() }}
+                        <div>
+                            {% for error in form.date_of_event.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.date_of_event() }}
+                    {% endif %}
+            </div>    
+            <div>
+                {{ form.content.label() }}
+                {% if form.content.errors %}
+                    {{ form.content() }}
+                    <div>
+                        {% for error in form.content.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.content() }}
+                {% endif %}
+            
+            </div>
+        </fieldset>
+        <div>
+            {{ form.submit() }}
+        </div>
+        
+    </form>
+</div>
+{% endblock content %}

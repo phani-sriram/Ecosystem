@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1> Poll </h1>
+    <p>{{ poll.content }}</p>
+    <hr>
+    <p> {{ poll.votes_1 }} </p>
+    <p>1: {{poll.option1}} </p>
+    <h5>{{ poll.votes_1 }} vote/votes for this option</h5>
+    <p>2: {{ poll.option2 }}</p>
+    <h5>{{ poll.votes_2 }} vote/votes for this option</h5>
+
+   
+<form method="POST" action="">
+    {{ form.hidden_tag() }}
+    <fieldset>
+        
+        <div>
+            {{ form.vote_1.label() }}
+            {% if form.vote_1,errors %}
+                {{ form.vote_1() }}
+                <div>
+                    {% for error in form.vote_1.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.vote_1()}}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.vote_2.label() }}
+            {% if form.vote_2,errors %}
+                {{ form.vote_2() }}
+                <div>
+                    {% for error in form.vote_2.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.vote_2()}}
+            {% endif %}
+        </div>
+    </fieldset>
+    <div>
+        {{form.submit()}}
+        <p>IF YOU HAVE BEEN DIRECTED TO THE RUNNING POLLS WINDOW WHEN YOU HIT SUBMIT YOU HAVE SUCCESFULLY VOTED IN THIS POLL.YOU CAN OBSERVE THE VOTE COUNT CHANGING PLEASE DO NOT VOTE FOR THIS POLL AGAIN ALSO NOTE YOUR VOTE WILL NOT BE COUNTED IF YOU SELECT BOTH THE OPTIONS</p>
+    </div>
+</form>
+
+{% endblock content %}

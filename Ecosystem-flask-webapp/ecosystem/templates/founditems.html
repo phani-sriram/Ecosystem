@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+   
+    <h1>Found Items</h1>
+    {% for item in items %}
+        <hr>
+        <h3><a href="#">Posted on : {{ item.date_posted.strftime('%Y-%m-%d') }}</h3></a>
+        <p>{{ item.description }}</p> 
+        
+        <hr>
+    {% endfor %}
+    <a href="{{ url_for('reportfound') }}">Found an unidentified item?</a>
+{% endblock content %}

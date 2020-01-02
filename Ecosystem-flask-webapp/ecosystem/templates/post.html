@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block content %}
+        <br>
+        <br>
+        {% if post.anomymity == False %}
+            <a>Posted by : {{ post.author.name }}</a>
+            <br>
+            <a>Resident of : {{ post.author.apt_no }}</a>
+            <br>
+        {% endif %}
+        <a>Posted on : {{ post.date_posted.strftime('%Y-%m-%d') }}</a>
+        <br>
+        {% if post.author == current_user   %}
+            <div>
+                <a href="{{ url_for('updatepost', post_id = post.id) }}">Update</a>
+                
+                <form action="{{ url_for('delete_post', post_id = post.id) }}" method="POST">
+                    <input type="submit" value="Delete">
+                </form>
+            </div>
+        {% else %}
+        {% if current_user.username == 'admin' %}
+        <div>
+            <form action="{{ url_for('delete_post', post_id = post.id) }}" method="POST">
+                <input type="submit" value="Delete">
+            </form>
+        </div>
+        {% endif %}
+        {% endif %}
+        <a>{{ post.title }}</a>
+        <br>
+        <h3>Content</h3>
+        <a>{{ post.content }}</a>
+        <hr>
+{% endblock content %}

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+   
+    <h1>UPCOMING EVENTS</h1>
+    {% for event in events %}
+        <hr>
+        <h3>Posted by : {{ event.author.name }}</h3>
+        <h3>Resident of : {{ event.author.apt_no }}</h3>
+        <a href="{{ url_for('event', event_id = event.id) }}">Posted on : {{ event.date_posted.strftime('%Y-%m-%d') }}</a>
+        <h3>Category : {{ event.category }}</h3>
+        <h3>Content</h3>
+        <p>{{ event.content }}</p>
+        <hr>
+    {% endfor %}
+{% endblock content %}
