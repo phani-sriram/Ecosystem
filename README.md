@@ -8,9 +8,9 @@ go to a browser and enter localhost:5000
 
 Whatever imports that are unregistered can be intstalled with a pip3 install 
 mainly 
-pip3 install flask
-pip3 install flask-sqlalchemy
-pip3 install flask-bcrypt
+pip3 install flask, 
+pip3 install flask-sqlalchemy, 
+pip3 install flask-bcrypt..
 etc.
 
 read the project report pdf on detailed use of this website
