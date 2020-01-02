@@ -4,7 +4,7 @@
     <h1>Found Items</h1>
     {% for item in items %}
         <hr>
-        <h3><a href="#">Posted on : {{ item.date_posted.strftime('%Y-%m-%d') }}</h3></a>
+        <h3>Posted on : {{ item.date_posted.strftime('%Y-%m-%d') }}</h3>
         <p>{{ item.description }}</p> 
         
         <hr>
