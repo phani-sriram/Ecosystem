@@ -3,7 +3,8 @@
    
     <h1>ANNOUNCEMENTS</h1>
     {% for post in posts %}
-    
+    <div style="word-wrap: break-word">
+
         <hr>
         {% if post.anonymity == False %}
             <h3>Posted by : {{ post.author.name }}</h3>
@@ -17,6 +18,7 @@
         <h3>Content</h3>
         <p class="article-content">{{ post.content }}</p>
         <hr>
-    
+    </div>
+
     {% endfor %}
 {% endblock content %}
