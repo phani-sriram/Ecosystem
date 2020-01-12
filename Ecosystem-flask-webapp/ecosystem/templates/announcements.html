@@ -3,6 +3,7 @@
    
     <h1>ANNOUNCEMENTS</h1>
     {% for post in posts %}
+    
         <hr>
         {% if post.anonymity == False %}
             <h3>Posted by : {{ post.author.name }}</h3>
@@ -10,10 +11,12 @@
         {% else %}
             <h3>Posted by : Anonymous</h3>
         {% endif %}
+        
         <h3>Posted on : {{ post.date_posted.strftime('%Y-%m-%d') }}</h3>
         <a href={{ url_for('post', post_id = post.id) }}>{{ post.title }}</a>
         <h3>Content</h3>
-        <p>{{ post.content }}</p>
+        <p class="article-content">{{ post.content }}</p>
         <hr>
+    
     {% endfor %}
 {% endblock content %}

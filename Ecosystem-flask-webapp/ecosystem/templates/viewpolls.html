@@ -7,7 +7,7 @@
         <hr>
         <h3>Posted by : {{ poll.author.name }}</h3>
         <br>
-        {% if poll.votes_1 + poll.votes_2 <= 40 %}
+        {% if poll.votes_1 + poll.votes_2 <= 10 %}
         <h3>Content</h3>
         <p> {{ poll.content }}</p>
         <h3>Option 1 : {{poll.option1}} </h3>

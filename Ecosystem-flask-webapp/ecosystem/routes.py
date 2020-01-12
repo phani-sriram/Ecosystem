@@ -190,6 +190,7 @@ def create_poll():
 @app.route("/view_polls", methods=['GET', 'POST'])
 def view_polls():
     polls = Poll.query.all()
+    
     return render_template('viewpolls.html', polls=polls)
 
 @app.route("/view_polls/<int:poll_id>", methods=['GET', 'POST'])
@@ -226,9 +227,12 @@ def search():
         apt_no = form.search.data
         user = User.query.filter_by(apt_no=apt_no).first()
         posts = Post.query.filter_by(author=user).all()
+        len1 = len(posts)
         events = Event.query.filter_by(author=user).all()
+        len2 = len(events)
         polls = Poll.query.filter_by(author=user).all()
-        return render_template('searchreturn.html', posts=posts, events=events, polls=polls)
+        len3 = len(polls)
+        return render_template('searchreturn.html', posts=posts, events=events, polls=polls, len1=len1, len2=len2, len3=len3)
     return render_template('search.html', form=form) 
 
 '''def save_picture(form_picture):

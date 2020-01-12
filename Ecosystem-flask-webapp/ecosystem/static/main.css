@@ -1,5 +1,5 @@
 body {
-    background-color: #D2691E;
+    background-color: #428bca;
     color: #333333;
     margin-top: 5rem;
   }
@@ -46,6 +46,17 @@ body {
     white-space
     : pre-line;
   }
+  .article-metadata {
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #e3e3e3
+  }
+  
+  .article-metadata a:hover {
+    color: #333;
+    text-decoration: none;
+  }
+  
   
   
   

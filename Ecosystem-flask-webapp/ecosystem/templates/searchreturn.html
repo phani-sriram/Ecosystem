@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
+    <h2>Announcements</h2>
     {% for post in posts %}
         <hr>
         {% if post.anonymity == False %}
@@ -12,9 +13,14 @@
             <hr>
         {% endif %}
     {% endfor %}
+    {% if len1>=1 %}
     <p>These are the posts that the user has written giving us permission to publish his/her identity. The user might have written other posts anonymously that we do not have the permission to display</p>
+    {% else %}
+    <p>There are no posts to display</p>
+    {% endif %}
     <hr>
-    
+    <h2>Events</h2>
+    <hr>
     {% for event in events %}
         <hr>
         <h3>Posted by : {{ event.author.name }}</h3>
@@ -25,8 +31,12 @@
         <p>{{ event.content }}</p>
         <hr>
     {% endfor %}
+    {% if len2 == 0 %}
+        <p>There are no events to display</p>
+    {% endif %}
+        <hr>
+    <h2>Polls</h2>
     <hr>
-
     {% for poll in polls %}
         
         <hr>
@@ -54,5 +64,8 @@
                 {% endif %}
         {% endif %}
     {% endfor %}
+    {% if len3 == 0 %}
+        <p>There are no Polls to display</p>
+    {% endif %}
 
 {% endblock content %}
