@@ -64,7 +64,7 @@ class Item(db.Model):
     description = db.Column(db.Text)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
     def __repr__(self):
-        return f"Item('{self.category}')"
+        return f"Item('{self.description}')"
 
 
 
